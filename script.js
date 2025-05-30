@@ -1,45 +1,28 @@
 // Coach AI Application JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Store team logos
-    const teamLogos = {};
-    
-    // MLB Stadium Backgrounds with placeholder images and team logos
+    // Simplified stadium array with just 3 stadiums for testing
     const stadiums = [
-        {
-            team: 'Arizona Diamondbacks',
-            name: 'Chase Field',
-            location: 'Phoenix',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
-        },
-        {
-            team: 'Atlanta Braves',
-            name: 'Truist Park',
-            location: 'Atlanta',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
-        },
-        {
-            team: 'Baltimore Orioles',
-            name: 'Oriole Park at Camden Yards',
-            location: 'Baltimore',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
-        },
         {
             team: 'Boston Red Sox',
             name: 'Fenway Park',
             location: 'Boston',
-            image: 'Images/TeamStadium/fenwaypark.jpg.webp', // Stadium image path
-            logo: 'Images/TeamLogo/REDSOXlogo.png'   // Team logo image path
+            image: 'Images/TeamStadium/fenwaypark.jpg.webp',
+            logo: 'Images/TeamLogo/REDSOXlogo.png'
         },
         {
             team: 'Chicago Cubs',
             name: 'Wrigley Field',
             location: 'Chicago',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'Images/TeamStadium/fenwaypark.jpg.webp', // Using Fenway as placeholder
+            logo: 'Images/TeamLogo/REDSOXlogo.png'   // Using Red Sox logo as placeholder
+        },
+        {
+            team: 'New York Yankees',
+            name: 'Yankee Stadium',
+            location: 'New York',
+            image: 'Images/TeamStadium/fenwaypark.jpg.webp', // Using Fenway as placeholder
+            logo: 'Images/TeamLogo/REDSOXlogo.png'   // Using Red Sox logo as placeholder
         },
         {
             team: 'Chicago White Sox',
@@ -209,114 +192,97 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
     
-    // Initialize variables
-    const heroElement = document.getElementById('hero-background');
+    // Get DOM elements
+    const heroElement = document.querySelector('.hero');
     const stadiumNameElement = document.getElementById('stadium-name');
     const stadiumLocationElement = document.getElementById('stadium-location');
     const teamLogoElement = document.getElementById('team-logo');
-    const prevBgBtn = document.getElementById('prev-stadium');
-    const nextBgBtn = document.getElementById('next-stadium');
+    const prevBgBtn = document.getElementById('prev-bg');
+    const nextBgBtn = document.getElementById('next-bg');
     const contentElement = document.querySelector('.content');
     
-    // Filter to only include stadiums with actual images (not placeholders)
-    const validStadiums = stadiums.filter(stadium => 
-        stadium.image && stadium.image !== 'placeholder.jpg' && 
-        stadium.logo && stadium.logo !== 'placeholder.jpg'
-    );
-    
     // Initialize with a random stadium index
-    let currentStadiumIndex = 0;
-    
-    if (validStadiums.length > 0) {
-        // Choose a random valid stadium
-        const randomValidStadium = validStadiums[Math.floor(Math.random() * validStadiums.length)];
-        // Find its index in the original stadiums array
-        currentStadiumIndex = stadiums.findIndex(stadium => stadium.team === randomValidStadium.team);
-    }
-    
-    // Create default placeholder background
-    heroElement.style.backgroundColor = '#333';
+    let currentStadiumIndex = Math.floor(Math.random() * stadiums.length);
+    console.log('Starting with stadium:', currentStadiumIndex, stadiums[currentStadiumIndex].name);
     
     // Initialize with first stadium
     updateStadiumDisplay();
     
-    // Stadium navigation controls
+    // Add event listeners for navigation buttons
     prevBgBtn.addEventListener('click', function() {
+        console.log('Previous button clicked');
         currentStadiumIndex = (currentStadiumIndex - 1 + stadiums.length) % stadiums.length;
+        console.log('New stadium index:', currentStadiumIndex, 'Stadium:', stadiums[currentStadiumIndex].name);
         updateStadiumDisplay();
     });
     
     nextBgBtn.addEventListener('click', function() {
+        console.log('Next button clicked');
         currentStadiumIndex = (currentStadiumIndex + 1) % stadiums.length;
+        console.log('New stadium index:', currentStadiumIndex, 'Stadium:', stadiums[currentStadiumIndex].name);
         updateStadiumDisplay();
     });
-    
-    // No custom stadium upload needed
     
     // No upload event listeners needed
     
     // This function is no longer needed since we're using the logo field directly
     // Kept for reference
     
+    // Function to update the stadium display
     function updateStadiumDisplay() {
-        // Add transition class for blur effect
-        document.body.classList.add('transitioning');
-        contentElement.style.opacity = '0.5';
+        console.log('Updating stadium display to:', stadiums[currentStadiumIndex].name);
         
-        // Fade out the current stadium info
+        // Fade out elements
+        fadeOutElements();
+        
+        // After a short delay, update content
+        setTimeout(() => {
+            const stadium = stadiums[currentStadiumIndex];
+            updateStadiumContent(stadium);
+            
+            // Fade in elements after update
+            setTimeout(() => {
+                fadeInElements();
+            }, 400);
+        }, 400);
+    }
+    
+    // Helper function to fade out elements
+    function fadeOutElements() {
+        contentElement.style.opacity = '0.5';
         stadiumNameElement.style.opacity = '0';
         stadiumLocationElement.style.opacity = '0';
         document.querySelector('.location-divider').style.opacity = '0';
         teamLogoElement.style.opacity = '0';
-        
-        setTimeout(() => {
-            const stadium = stadiums[currentStadiumIndex];
-            
-            // If using a placeholder, just use the background color instead of an image
-            if (stadium.image === 'placeholder.jpg') {
-                heroElement.style.backgroundImage = 'none';
-            } else {
-                heroElement.style.backgroundImage = `url(${stadium.image})`;
-            }
-            
-            // Update stadium info
-            stadiumNameElement.textContent = stadium.name;
-            stadiumLocationElement.textContent = stadium.location;
-            
-            // Update team logo
-            updateTeamLogo();
-            
-            // Fade in the new stadium info
-            setTimeout(() => {
-                stadiumNameElement.style.opacity = '1';
-                stadiumLocationElement.style.opacity = '1';
-                document.querySelector('.location-divider').style.opacity = '0.5';
-                teamLogoElement.style.opacity = '1';
-                contentElement.style.opacity = '1';
-                document.body.classList.remove('transitioning');
-            }, 400);
-            
-        }, 400);
     }
     
-    function updateTeamLogo() {
-        const stadium = stadiums[currentStadiumIndex];
+    // Helper function to update stadium content
+    function updateStadiumContent(stadium) {
+        console.log('Loading stadium:', stadium.name, 'with image:', stadium.image);
         
-        // Check if we have a logo for this stadium
-        if (stadium.logo && stadium.logo !== 'placeholder.jpg') {
-            // Set the background image
-            teamLogoElement.style.backgroundImage = `url(${stadium.logo})`;
-            teamLogoElement.style.backgroundColor = 'transparent';
-            teamLogoElement.style.border = 'none';
-        } else {
-            // Reset to default placeholder
-            teamLogoElement.style.backgroundImage = 'none';
-            teamLogoElement.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-            teamLogoElement.style.border = '2px solid rgba(255, 255, 255, 0.5)';
-        }
+        // Update background image
+        heroElement.style.backgroundImage = `url(${stadium.image})`;
+        
+        // Update stadium info text
+        stadiumNameElement.textContent = stadium.name;
+        stadiumLocationElement.textContent = stadium.location;
+        
+        // Update team logo
+        teamLogoElement.style.backgroundImage = `url(${stadium.logo})`;
+        teamLogoElement.style.backgroundColor = 'transparent';
+        teamLogoElement.style.border = 'none';
     }
     
-    // Coach data
+    // Helper function to fade in elements
+    function fadeInElements() {
+        stadiumNameElement.style.opacity = '1';
+        stadiumLocationElement.style.opacity = '1';
+        document.querySelector('.location-divider').style.opacity = '0.5';
+        teamLogoElement.style.opacity = '1';
+        contentElement.style.opacity = '1';
+    }
+    
+    // Coach data for the chat interface
     const coaches = {
         mike: {
             name: 'Mike Johnson',
