@@ -4,8 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Coach AI</h1>
+    <div class="hero" id="hero-background">
+        <div class="overlay"></div>
+        
+        <!-- Stadium Info Display -->
+        <div class="stadium-info">
+            <h2 id="stadium-name">Fenway Park</h2>
+            <p id="stadium-location">Boston</p>
+        </div>
+        
+        <!-- Background Controls -->
+        <div class="bg-controls">
+            <button id="prev-bg"><i class="fas fa-chevron-left"></i></button>
+            <button id="next-bg"><i class="fas fa-chevron-right"></i></button>
+            <label for="custom-bg-upload" class="custom-bg-btn">
+                <i class="fas fa-upload"></i>
+                <span>Add Stadium</span>
+            </label>
+            <input type="file" id="custom-bg-upload" accept="image/*" style="display: none;">
+        </div>
+        
+        <div class="logo-container">
+            <div class="logo" id="team-logo">
+                <!-- Team logo placeholder -->
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>COACH AI</h1>
+            <p class="tagline">A FULLY RESPONSIVE BASEBALL TRAINING PLATFORM DESIGNED TO ELEVATE YOUR GAME</p>
+            
+            <div class="divider"></div>
+            
+            <nav class="main-nav">
+                <a href="#coaches">COACHES</a>
+                <a href="#chat">CHAT</a>
+                <a href="#about">ABOUT</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+        </div>
+        
+        <footer class="hero-footer">
+            <p>© COACH AI BASEBALL TRAINING PLATFORM</p>
+        </footer>
+    </div>
+    
+    <section id="coaches" class="coaches-section">
+        <h2>OUR COACHES</h2>
+        <div class="coach-grid">
+            <div class="coach-card">
+                <div class="coach-image" id="mike-image"></div>
+                <h3>Mike Johnson</h3>
+                <p>Pitching & Mechanics Specialist</p>
+                <button class="chat-btn" data-coach="mike">Chat with Mike</button>
+            </div>
+            
+            <div class="coach-card">
+                <div class="coach-image" id="sarah-image"></div>
+                <h3>Sarah Rodriguez</h3>
+                <p>Batting Coach & former All-Star</p>
+                <button class="chat-btn" data-coach="sarah">Chat with Sarah</button>
+            </div>
+            
+            <div class="coach-card">
+                <div class="coach-image" id="david-image"></div>
+                <h3>David Washington</h3>
+                <p>Fielding Expert & Gold Glove winner</p>
+                <button class="chat-btn" data-coach="david">Chat with David</button>
+            </div>
+            
+            <div class="coach-card">
+                <div class="coach-image" id="lisa-image"></div>
+                <h3>Lisa Chen</h3>
+                <p>Strategy Specialist & Championship-winning Head Coach</p>
+                <button class="chat-btn" data-coach="lisa">Chat with Lisa</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="chat" class="chat-section">
+        <h2>CHAT WITH YOUR COACH</h2>
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="selected-coach">
+                    <div class="coach-avatar" id="selected-coach-avatar"></div>
+                    <div class="coach-info">
+                        <h3 id="selected-coach-name">Select a Coach</h3>
+                        <p id="selected-coach-title"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            
+            <div class="chat-input">
+                <textarea id="user-input" placeholder="Ask your baseball question here..."></textarea>
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
 </body>
 </html>
