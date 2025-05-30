@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
             team: 'Boston Red Sox',
             name: 'Fenway Park',
             location: 'Boston',
-            image: 'fenwaypark.jpg.webp', // Replace with your stadium image path
-            logo: 'REDSOXlogo.png'   // Replace with your team logo image path
+            image: 'Images/TeamStadium/fenwaypark.jpg.webp', // Stadium image path
+            logo: 'Images/TeamLogo/REDSOXlogo.png'   // Team logo image path
         },
         {
             team: 'Chicago Cubs',
@@ -206,20 +206,33 @@ document.addEventListener('DOMContentLoaded', function() {
             team: 'Washington Nationals',
             name: 'Nationals Park',
             location: 'Washington, D.C.',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
         }
     ];
     
-    let currentStadiumIndex = 0;
+    // Initialize variables
     const heroElement = document.getElementById('hero-background');
     const stadiumNameElement = document.getElementById('stadium-name');
     const stadiumLocationElement = document.getElementById('stadium-location');
     const teamLogoElement = document.getElementById('team-logo');
-    const prevBgBtn = document.getElementById('prev-bg');
-    const nextBgBtn = document.getElementById('next-bg');
-    // No upload elements needed
+    const prevBgBtn = document.getElementById('prev-stadium');
+    const nextBgBtn = document.getElementById('next-stadium');
     const contentElement = document.querySelector('.content');
+    
+    // Filter to only include stadiums with actual images (not placeholders)
+    const validStadiums = stadiums.filter(stadium => 
+        stadium.image && stadium.image !== 'placeholder.jpg' && 
+        stadium.logo && stadium.logo !== 'placeholder.jpg'
+    );
+    
+    // Initialize with a random stadium index
+    let currentStadiumIndex = 0;
+    
+    if (validStadiums.length > 0) {
+        // Choose a random valid stadium
+        const randomValidStadium = validStadiums[Math.floor(Math.random() * validStadiums.length)];
+        // Find its index in the original stadiums array
+        currentStadiumIndex = stadiums.findIndex(stadium => stadium.team === randomValidStadium.team);
+    }
     
     // Create default placeholder background
     heroElement.style.backgroundColor = '#333';

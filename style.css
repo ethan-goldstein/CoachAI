@@ -154,24 +154,27 @@ a:hover {
 
 .logo-container {
     position: absolute;
-    top: 15%;
-    z-index: 2;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid rgba(255, 255, 255, 0.5);
-    background-size: cover;
+    background-size: 80% 80%;
     background-position: center;
+    background-repeat: no-repeat;
     transition: opacity 0.8s ease, transform 0.5s ease;
 }
 
@@ -183,8 +186,10 @@ a:hover {
 .content {
     max-width: 800px;
     padding: 0 20px;
+    margin: 0 auto;
     position: relative;
-    z-index: 2;
+    z-index: 10;
+    margin-top: 150px;
     transition: opacity 0.4s ease;
 }
 
