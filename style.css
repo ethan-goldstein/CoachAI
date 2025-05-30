@@ -50,40 +50,58 @@ a:hover {
 /* Stadium Info Display */
 .stadium-info {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    bottom: 120px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
     z-index: 10;
-    text-align: left;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 12px 20px;
-    border-radius: 5px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+    letter-spacing: 4px;
 }
 
-#team-name {
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0 0 5px 0;
-    letter-spacing: 1px;
-    color: #f8f8f8;
-    opacity: 0.9;
+.stadium-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 0 20px;
+}
+
+.location-divider {
+    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.8);
+    transition: opacity 0.4s ease;
+    margin: 0 20px;
+    font-size: 0.6rem;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 #stadium-name {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
     letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.8);
     transition: opacity 0.4s ease;
 }
 
+/* Styles moved above */
+
 #stadium-location {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin: 5px 0 0 0;
+    font-size: 1rem;
+    opacity: 0.9;
     font-weight: 300;
     transition: opacity 0.4s ease;
+}
+
+#stadium-location i {
+    margin-right: 5px;
+    color: #ff6b6b;
 }
 
 /* Background Controls */
@@ -94,6 +112,26 @@ a:hover {
     display: flex;
     gap: 10px;
     z-index: 10;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.chat-tab {
+    padding: 10px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+}
+
+.chat-tab:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
 }
 
 #prev-bg, #next-bg {
@@ -114,38 +152,13 @@ a:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-.custom-bg-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    padding: 0 15px;
-    height: 40px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.custom-bg-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.custom-bg-btn i {
-    font-size: 14px;
-}
-
-.custom-bg-btn span {
-    font-size: 12px;
-    letter-spacing: 1px;
-    font-weight: 300;
-}
-
 .logo-container {
     position: absolute;
     top: 15%;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .logo {
@@ -258,9 +271,9 @@ a:hover {
 
 .coach-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -277,7 +290,7 @@ a:hover {
 }
 
 .coach-image {
-    height: 200px;
+    height: 120px;
     background-color: #ddd;
     background-size: cover;
     background-position: center;
@@ -300,32 +313,95 @@ a:hover {
 }
 
 .coach-card h3 {
-    margin-top: 20px;
-    font-size: 1.2rem;
+    margin-top: 12px;
+    font-size: 1rem;
     color: #333;
 }
 
+/* Stadium name styles are defined above */
+
 .coach-card p {
-    padding: 10px 20px;
+    padding: 5px 10px;
     color: #666;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
 }
 
 .chat-btn {
     background-color: #333;
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    margin: 15px 0 20px;
+    padding: 8px 15px;
+    margin: 8px 0 12px;
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .chat-btn:hover {
     background-color: #555;
+}
+
+/* Coach Selection Page */
+.coach-select-body {
+    background-color: #121212;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coach-select-container {
+    max-width: 1000px;
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.coach-select-container h1 {
+    font-size: 2rem;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.coach-select-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+/* Chat Page */
+.chat-body {
+    background-color: #121212;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.back-button i {
+    margin-right: 8px;
+}
+
+.back-button:hover {
+    color: #fff;
+    transform: translateX(-5px);
 }
 
 /* Chat Section */
@@ -476,6 +552,22 @@ a:hover {
     
     .coach-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .main-nav a {
+        font-size: 0.8rem;
+        padding: 8px 10px;
     }
 }
 

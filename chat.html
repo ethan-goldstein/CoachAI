@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach AI - Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="chat-body">
+    <div class="chat-container">
+        <div class="chat-header">
+            <a href="coaches.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+            <div class="selected-coach">
+                <div class="coach-avatar" id="selected-coach-avatar"></div>
+                <div class="coach-info">
+                    <h3 id="selected-coach-name">Coach Name</h3>
+                    <p id="selected-coach-title">Coach Specialty</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be added here dynamically -->
+            <div class="message coach-message">
+                Hello! I'm ready to help with your baseball training. What would you like to work on today?
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <textarea id="user-input" placeholder="Ask your baseball question here..."></textarea>
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    
+    <script src="chat.js"></script>
+</body>
+</html>
