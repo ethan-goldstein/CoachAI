@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
             team: 'Boston Red Sox',
             name: 'Fenway Park',
             location: 'Boston',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'fenwaypark.jpg.webp', // Replace with your stadium image path
+            logo: 'REDSOXlogo.png'   // Replace with your team logo image path
         },
         {
             team: 'Chicago Cubs',
