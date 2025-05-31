@@ -3,49 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coach AI - Select a Coach</title>
+    <title>Coach AI - Select Your Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="coach-select-body">
-    <div class="coach-select-container">
-        <h1>SELECT YOUR COACH</h1>
-        <p class="coach-select-subtitle">Choose a specialist</p>
+<body>
+    <section class="hero coach-hero">
+        <div class="overlay"></div>
         
-        <div class="coach-grid">
-            <div class="coach-card" data-coach="mike">
-                <div class="coach-image" id="mike-image"></div>
-                <h3>Mike Johnson</h3>
-                <p>Pitching & Mechanics Specialist</p>
-                <button class="chat-btn">Chat with Mike</button>
+        <div class="stadium-info">
+            <div class="stadium-text">
+                <h2 id="stadium-name"></h2>
+                <div class="location-container">
+                    <span id="stadium-location"></span>
+                    <span class="location-divider">|</span>
+                    <span id="team-name"></span>
+                </div>
             </div>
-            
-            <div class="coach-card" data-coach="sarah">
-                <div class="coach-image" id="sarah-image"></div>
-                <h3>Sarah Rodriguez</h3>
-                <p>Batting Coach & former All-Star</p>
-                <button class="chat-btn">Chat with Sarah</button>
-            </div>
-            
-            <div class="coach-card" data-coach="david">
-                <div class="coach-image" id="david-image"></div>
-                <h3>David Washington</h3>
-                <p>Fielding Expert & Gold Glove winner</p>
-                <button class="chat-btn">Chat with David</button>
-            </div>
-            
-            <div class="coach-card" data-coach="lisa">
-                <div class="coach-image" id="lisa-image"></div>
-                <h3>Lisa Chen</h3>
-                <p>Strategy Specialist & Championship-winning Head Coach</p>
-                <button class="chat-btn">Chat with Lisa</button>
+            <div class="logo-container">
+                <div id="team-logo"></div>
             </div>
         </div>
         
-        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
-    </div>
+        <div class="content coach-content">
+            <a href="index.html" class="home-button"><i class="fas fa-home"></i> Home</a>
+            <h1>COACH AI</h1>
+            <p class="tagline">SELECT YOUR COACH</p>
+            
+            <div class="coach-grid">
+                <div class="coach-card" data-coach="mike">
+                    <div class="coach-image" id="mike-image"></div>
+                    <h3>Mike Johnson</h3>
+                    <p>Pitching & Mechanics</p>
+                </div>
+                
+                <div class="coach-card" data-coach="sarah">
+                    <div class="coach-image" id="sarah-image"></div>
+                    <h3>Sarah Rodriguez</h3>
+                    <p>Batting Coach</p>
+                </div>
+                
+                <div class="coach-card" data-coach="david">
+                    <div class="coach-image" id="david-image"></div>
+                    <h3>David Washington</h3>
+                    <p>Fielding Expert</p>
+                </div>
+                
+                <div class="coach-card" data-coach="lisa">
+                    <div class="coach-image" id="lisa-image"></div>
+                    <h3>Lisa Chen</h3>
+                    <p>Strategy Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <script src="coaches.js"></script>
+    <script src="background-switcher.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up coach card click handlers
+        const coachCards = document.querySelectorAll('.coach-card');
+        coachCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const coachId = this.getAttribute('data-coach');
+                window.location.href = `chat.html?coach=${coachId}`;
+            });
+        });
+    });
+    </script>
 </body>
 </html>

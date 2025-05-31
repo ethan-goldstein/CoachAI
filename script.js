@@ -1,5 +1,36 @@
 // Coach AI Application JavaScript
 
+// Variable to track the background switching interval
+let backgroundSwitchingInterval = null;
+
+// Function to start automatic background switching
+function startBackgroundSwitching() {
+    console.log('Starting automatic background switching');
+    // Clear any existing interval
+    if (backgroundSwitchingInterval) {
+        clearInterval(backgroundSwitchingInterval);
+    }
+    
+    // Set interval to switch backgrounds every 6 seconds
+    backgroundSwitchingInterval = setInterval(() => {
+        console.log('Auto-switching to next stadium');
+        // Store previous index for transition effects
+        previousStadiumIndex = currentStadiumIndex;
+        // Get the next stadium index
+        currentStadiumIndex = (currentStadiumIndex + 1) % stadiums.length;
+        // Update the stadium display
+        updateStadiumDisplay();
+    }, 6000);
+}
+
+// Function to stop automatic background switching
+function stopBackgroundSwitching() {
+    if (backgroundSwitchingInterval) {
+        clearInterval(backgroundSwitchingInterval);
+        backgroundSwitchingInterval = null;
+    }
+}
+
 // Force reset any stuck transitions when the page loads
 window.onload = function() {
     console.log('Window loaded - resetting transitions');
@@ -46,6 +77,17 @@ function fadeOutElements() {
     const stadiumText = document.querySelector('.stadium-text');
     const logoContainer = document.querySelector('.logo-container');
     
+    // Set the exact same transition for all elements
+    const transitionValue = 'opacity 0.4s ease-in-out';
+    if (stadiumName) stadiumName.style.transition = transitionValue;
+    if (stadiumLocation) stadiumLocation.style.transition = transitionValue;
+    if (teamLogo) teamLogo.style.transition = transitionValue;
+    if (content) content.style.transition = transitionValue;
+    if (locationDivider) locationDivider.style.transition = transitionValue;
+    if (stadiumInfo) stadiumInfo.style.transition = transitionValue;
+    if (stadiumText) stadiumText.style.transition = transitionValue;
+    if (logoContainer) logoContainer.style.transition = transitionValue;
+    
     // Hide all elements
     if (stadiumName) stadiumName.style.opacity = '0';
     if (stadiumLocation) stadiumLocation.style.opacity = '0';
@@ -68,6 +110,17 @@ function fadeInElements() {
     const stadiumInfo = document.querySelector('.stadium-info');
     const stadiumText = document.querySelector('.stadium-text');
     const logoContainer = document.querySelector('.logo-container');
+    
+    // Set the exact same transition for all elements
+    const transitionValue = 'opacity 0.4s ease-in-out';
+    if (stadiumName) stadiumName.style.transition = transitionValue;
+    if (stadiumLocation) stadiumLocation.style.transition = transitionValue;
+    if (teamLogo) teamLogo.style.transition = transitionValue;
+    if (content) content.style.transition = transitionValue;
+    if (locationDivider) locationDivider.style.transition = transitionValue;
+    if (stadiumInfo) stadiumInfo.style.transition = transitionValue;
+    if (stadiumText) stadiumText.style.transition = transitionValue;
+    if (logoContainer) logoContainer.style.transition = transitionValue;
     
     // Make all elements visible
     if (stadiumName) stadiumName.style.opacity = '1';
@@ -104,13 +157,6 @@ document.addEventListener('DOMContentLoaded', function() {
             logo: 'Images/TeamLogo/CubsLogo.png'
         },
         {
-            team: 'New York Yankees',
-            name: 'Yankee Stadium',
-            location: 'New York',
-            image: 'Images/TeamStadium/YankeeStadium.jpg',
-            logo: 'Images/TeamLogo/YanksLogo.png'
-        },
-        {
             team: 'Chicago White Sox',
             name: 'Guaranteed Rate Field',
             location: 'Chicago',
@@ -129,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Progressive Field',
             location: 'Cleveland',
             image: 'Images/TeamStadium/GuardiansField.jpg',
-            logo: 'Images/TeamLogo/GuardiansLogo.webp'
+            logo: 'Images/TeamLogo/Guardians.png'
         },
         {
             team: 'Colorado Rockies',
@@ -163,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
             team: 'Los Angeles Angels',
             name: 'Angel Stadium',
             location: 'Anaheim',
-            image: 'Images/TeamStadium/AnglesStadium.jpg',
+            image: 'Images/TeamStadium/AnglesPark.jpg',
             logo: 'Images/TeamLogo/AngelsLogo.png'
         },
         {
@@ -219,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
             team: 'Pittsburgh Pirates',
             name: 'PNC Park',
             location: 'Pittsburgh',
-            image: 'Images/TeamStadium/PNCPark.jpg',
+            image: 'Images/TeamStadium/PiratesStadium.jpg',
             logo: 'Images/TeamLogo/PiratesLogo.png'
         },
         {
@@ -268,15 +314,43 @@ document.addEventListener('DOMContentLoaded', function() {
             team: 'Toronto Blue Jays',
             name: 'Rogers Centre',
             location: 'Toronto',
-            image: 'Images/TeamStadium/BlueJaysField.jpg',
+            image: 'Images/TeamStadium/BLUEJAYS.webp',
             logo: 'Images/TeamLogo/BlueJaysLogo.png'
         },
         {
             team: 'Washington Nationals',
             name: 'Nationals Park',
             location: 'Washington, D.C.',
-            image: 'Images/TeamStadium/NatsPark.jpg',
+            image: 'Images/TeamStadium/NATSPARK.webp',
             logo: 'Images/TeamLogo/NatsLogo.png'
+        },
+        {
+            team: 'Oakland Athletics',
+            name: 'Sutter Health Park',
+            location: 'Oakland',
+            image: 'Images/TeamStadium/Athletics.jpg',
+            logo: 'Images/TeamLogo/OAKLANDLOGO.png'
+        },
+        {
+            team: 'Arizona Diamondbacks',
+            name: 'D-Backs Stadium',
+            location: 'Phoenix',
+            image: 'Images/TeamStadium/DBACKS.webp',
+            logo: 'Images/TeamLogo/DBACKSLogo.png'
+        },
+        {
+            team: 'Baltimore Orioles',
+            name: 'Oriola Park',
+            location: 'Baltimore',
+            image: 'Images/TeamStadium/ORIOLESpark.jpg',
+            logo: 'Images/TeamLogo/OriolesLogo.png'
+        },
+        {
+            team: 'Atlanta Braves',
+            name: 'Truist Park',
+            location: 'Atlanta',
+            image: 'Images/TeamStadium/BRAVESSTADIUM.webp',
+            logo: 'Images/TeamLogo/BRAVESLOGO.webp'
         }
     ];
     
@@ -293,25 +367,22 @@ document.addEventListener('DOMContentLoaded', function() {
     heroElement.classList.remove('fading-out');
     heroElement.classList.remove('fading-in');
     
-    // Initialize with the first stadium
-    let currentStadiumIndex = 0;
+    // Initialize with a random stadium
+    let currentStadiumIndex = Math.floor(Math.random() * stadiums.length);
     let previousStadiumIndex = 0;
     
-    // Initial display
-    updateStadiumContent(stadiums[currentStadiumIndex]);
-    
-    // Make sure all elements are visible
-    fadeInElements();
-    
-    // Initialize with the first stadium
-    console.log('Starting with stadium:', stadiums[currentStadiumIndex].name);
+    // Log the randomly selected stadium
+    console.log('Starting with random stadium:', currentStadiumIndex, 'Stadium:', stadiums[currentStadiumIndex].name);
     
     // Make sure the hero element is in its default state
     heroElement.classList.remove('fading-out');
     heroElement.classList.remove('fading-in');
     
-    // Set the initial content
+    // Set the initial content with the random stadium
     updateStadiumContent(stadiums[currentStadiumIndex]);
+    
+    // Make sure all elements are visible
+    fadeInElements();
     
     // Event listeners for navigation buttons
     prevBgButton.addEventListener('click', function() {
@@ -409,10 +480,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (stadiumLocationElement) stadiumLocationElement.textContent = stadium.location;
         
         // Make sure all text elements are properly styled
-        if (stadiumNameElement) stadiumNameElement.style.transition = 'opacity 0.4s ease-in-out';
-        if (stadiumLocationElement) stadiumLocationElement.style.transition = 'opacity 0.4s ease-in-out';
-        if (teamLogoElement) teamLogoElement.style.transition = 'opacity 0.4s ease-in-out';
-        if (logoContainer) logoContainer.style.transition = 'opacity 0.4s ease-in-out';
+        const locationDivider = document.querySelector('.location-divider');
+        const stadiumInfo = document.querySelector('.stadium-info');
+        const stadiumText = document.querySelector('.stadium-text');
+        
+        // Set the exact same transition for all elements
+        const transitionValue = 'opacity 0.4s ease-in-out';
+        if (stadiumNameElement) stadiumNameElement.style.transition = transitionValue;
+        if (stadiumLocationElement) stadiumLocationElement.style.transition = transitionValue;
+        if (teamLogoElement) teamLogoElement.style.transition = transitionValue;
+        if (logoContainer) logoContainer.style.transition = transitionValue;
+        if (locationDivider) locationDivider.style.transition = transitionValue;
+        if (stadiumInfo) stadiumInfo.style.transition = transitionValue;
+        if (stadiumText) stadiumText.style.transition = transitionValue;
         
         // Set up image loading with proper error handling
         const bgImg = new Image();

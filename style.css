@@ -16,6 +16,17 @@ body {
     overflow: hidden; /* Prevent scrollbars during transitions */
 }
 
+/* Black outline style for specific elements */
+#stadium-name, #stadium-location, .location-divider, .tagline, p {
+    text-shadow: 
+       -1.5px -1.5px 0 #000,  
+        1.5px -1.5px 0 #000,
+       -1.5px  1.5px 0 #000,
+        1.5px  1.5px 0 #000,
+        0px 2px 4px rgba(0,0,0,0.8);
+    letter-spacing: 4px;
+}
+
 a {
     text-decoration: none;
     color: #fff;
@@ -94,7 +105,7 @@ a:hover {
 /* Stadium Info Display */
 .stadium-info {
     position: absolute;
-    bottom: 120px;
+    bottom: 60px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -103,50 +114,71 @@ a:hover {
     text-align: center;
     white-space: nowrap;
     transition: opacity 0.4s ease-in-out;
-    letter-spacing: 4px;
-    opacity: 1 !important;
+    opacity: 1;
 }
 
-.stadium-name {
-    font-size: 2.5rem;
+/* Stadium Info on Coaches Page */
+.coach-hero .stadium-info {
+    display: none; /* Hide the stadium info completely on coaches page */
+}
+
+.coach-hero #stadium-name,
+.coach-hero #stadium-location,
+.coach-hero #team-name,
+.coach-hero .location-divider {
+    font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 1);
-    white-space: nowrap;
-    transition: opacity 0.4s ease-in-out;
-    letter-spacing: 4px;
-    opacity: 1 !important;
+    line-height: 1.2;
+}
+
+.coach-hero .logo-container {
+    display: none; /* Hide the logo container on coaches page */
+}
+
+#stadium-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    display: inline-block;
 }
 
 .stadium-text {
-    font-size: 1.2rem;
-    font-weight: 300;
+    display: block;
+    text-align: center;
+    font-size: 7rem;
+    font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
     padding: 0 20px;
     transition: opacity 0.4s ease-in-out;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-    color: rgba(255, 255, 255, 1);
     will-change: opacity;
-    opacity: 1 !important;
+    opacity: 1;
 }
 
 .location-divider {
-    opacity: 1 !important;
+    opacity: 1;
     color: rgba(255, 255, 255, 0.8);
     margin: 0 20px;
-    font-size: 1.2rem; /* Increased from 0.6rem */
-    vertical-align: middle;
+    font-size: 1rem;
     display: inline-block;
     transition: opacity 0.4s ease-in-out;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 0;
 }
 
 #stadium-location {
     font-size: 1rem;
-    opacity: 1 !important;
-    font-weight: 400;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+    white-space: nowrap;
     transition: opacity 0.4s ease-in-out;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 4px;
+    opacity: 1;
+    text-transform: uppercase;
+    display: inline-block;
 }
 
 #stadium-location i {
@@ -270,38 +302,50 @@ a:hover {
     margin: 0 auto;
     padding: 20px;
     z-index: 10;
-    margin-top: 180px;
+    margin-top: 70px;
     transition: opacity 0.4s ease-in-out;
 }
 
 .content h1 {
     font-size: 4.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: -0.5rem;
     color: white;
     letter-spacing: 3px;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.coach-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: -0.3rem;
+}
+
 .tagline {
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 1);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #cccccc;
     letter-spacing: 4px;
     text-transform: uppercase;
-    padding: 0 20px;
+    padding: 0 30px;
     transition: opacity 0.4s ease-in-out;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-    will-change: opacity;
-    opacity: 1 !important;
+    text-shadow: -1.5px -1.5px 0 #000,  
+                 1.5px -1.5px 0 #000,
+                -1.5px  1.5px 0 #000,
+                 1.5px  1.5px 0 #000,
+                 0 0 5px rgba(255, 255, 255, 0.5),
+                 0 0 10px rgba(255, 255, 255, 0.3),
+                 0 0 15px rgba(255, 255, 255, 0.2);
+    opacity: 1;
+    position: relative;
+    z-index: 20;
 }
 
 .divider {
     width: 60%;
     height: 1px;
     background-color: rgba(255, 255, 255, 0.5);
-    margin: 30px auto;
+    margin: 10px auto;
 }
 
 .main-nav {
@@ -422,33 +466,134 @@ a:hover {
 }
 
 /* Coach Selection Page */
-.coach-select-body {
-    background-color: #121212;
-    color: #fff;
-    min-height: 100vh;
+.coach-hero {
+    background-image: url('Images/stadium1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.coach-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    z-index: 20; /* Ensure coach content stays above transitions */
+    opacity: 1 !important; /* Force coach content to stay visible */
+    transition: none; /* Disable transitions for coach content */
 }
 
-.coach-select-container {
-    max-width: 1000px;
-    width: 100%;
-    padding: 30px 20px;
+.coach-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 15px auto;
+    position: relative;
+    z-index: 50;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+.coach-card {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    padding: 15px;
+    width: 180px;
     text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 50;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
-.coach-select-container h1 {
-    font-size: 2rem;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
+.coach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-.coach-select-subtitle {
+.coach-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+#mike-image {
+    background-image: url('Images/mike.jpg');
+}
+
+#sarah-image {
+    background-image: url('Images/sarah.jpg');
+}
+
+#david-image {
+    background-image: url('Images/david.jpg');
+}
+
+#lisa-image {
+    background-image: url('Images/lisa.jpg');
+}
+
+.coach-card h3 {
+    margin: 0 0 5px;
     font-size: 0.9rem;
-    opacity: 0.7;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.coach-card p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.3;
+}
+
+.coach-card .chat-btn {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.coach-card .chat-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.coach-nav {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .coach-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
 }
 
 /* Chat Page */
