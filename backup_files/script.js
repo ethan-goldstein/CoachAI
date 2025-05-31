@@ -1,93 +1,7 @@
 // Coach AI Application JavaScript
 
-// Force reset any stuck transitions when the page loads
-window.onload = function() {
-    console.log('Window loaded - resetting transitions');
-    const hero = document.querySelector('.hero');
-    const overlay = document.querySelector('.overlay');
-    const stadiumNameElement = document.getElementById('stadium-name');
-    const stadiumLocationElement = document.getElementById('stadium-location');
-    const teamLogoElement = document.getElementById('team-logo');
-    const contentElement = document.querySelector('.content');
-    const locationDivider = document.querySelector('.location-divider');
-    const stadiumInfo = document.querySelector('.stadium-info');
-    const stadiumText = document.querySelector('.stadium-text');
-    
-    if (hero) {
-        // Reset hero element by removing all transition classes
-        hero.classList.remove('fading-out');
-        hero.classList.remove('fading-in');
-        
-        // Force the filter to be reset
-        hero.style.filter = 'none';
-    }
-    
-    // No overlay handling needed
-    
-    // Make sure all UI elements are visible
-    if (stadiumNameElement) stadiumNameElement.style.opacity = '1';
-    if (stadiumLocationElement) stadiumLocationElement.style.opacity = '1';
-    if (locationDivider) locationDivider.style.opacity = '1';
-    if (teamLogoElement) teamLogoElement.style.opacity = '1';
-    if (contentElement) contentElement.style.opacity = '1';
-    if (stadiumInfo) stadiumInfo.style.opacity = '1';
-    if (stadiumText) stadiumText.style.opacity = '1';
-    
-    
-// Helper function to fade out all UI elements simultaneously
-function fadeOutElements() {
-    // Directly set opacity for each element to ensure they're all hidden
-    const stadiumName = document.getElementById('stadium-name');
-    const stadiumLocation = document.getElementById('stadium-location');
-    const teamLogo = document.getElementById('team-logo');
-    const content = document.querySelector('.content');
-    const locationDivider = document.querySelector('.location-divider');
-    const stadiumInfo = document.querySelector('.stadium-info');
-    const stadiumText = document.querySelector('.stadium-text');
-    const logoContainer = document.querySelector('.logo-container');
-    
-    // Hide all elements
-    if (stadiumName) stadiumName.style.opacity = '0';
-    if (stadiumLocation) stadiumLocation.style.opacity = '0';
-    if (teamLogo) teamLogo.style.opacity = '0';
-    if (content) content.style.opacity = '0';
-    if (locationDivider) locationDivider.style.opacity = '0';
-    if (stadiumInfo) stadiumInfo.style.opacity = '0';
-    if (stadiumText) stadiumText.style.opacity = '0';
-    if (logoContainer) logoContainer.style.opacity = '0';
-}
-
-// Helper function to fade in all UI elements simultaneously
-function fadeInElements() {
-    // Directly set opacity for each element to ensure they're all visible
-    const stadiumName = document.getElementById('stadium-name');
-    const stadiumLocation = document.getElementById('stadium-location');
-    const teamLogo = document.getElementById('team-logo');
-    const content = document.querySelector('.content');
-    const locationDivider = document.querySelector('.location-divider');
-    const stadiumInfo = document.querySelector('.stadium-info');
-    const stadiumText = document.querySelector('.stadium-text');
-    const logoContainer = document.querySelector('.logo-container');
-    
-    // Make all elements visible
-    if (stadiumName) stadiumName.style.opacity = '1';
-    if (stadiumLocation) stadiumLocation.style.opacity = '1';
-    if (teamLogo) teamLogo.style.opacity = '1';
-    if (content) content.style.opacity = '1';
-    if (locationDivider) locationDivider.style.opacity = '1';
-    if (stadiumInfo) stadiumInfo.style.opacity = '1';
-    if (stadiumText) stadiumText.style.opacity = '1';
-    if (logoContainer) logoContainer.style.opacity = '1';
-}
-    
-    // Update the initial stadium content
-    if (typeof stadiums !== 'undefined' && stadiums.length > 0) {
-        updateStadiumContent(stadiums[0]);
-    }
-};
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Simplified stadium array with just 3 stadiums for testing
+    // Stadium array with all MLB teams
     const stadiums = [
         {
             team: 'Boston Red Sox',
@@ -202,13 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
             logo: 'Images/TeamLogo/MetsLogo.png'
         },
         {
-            team: 'New York Yankees',
-            name: 'Yankee Stadium',
-            location: 'New York',
-            image: 'Images/TeamStadium/YankeeStadium.jpg',
-            logo: 'Images/TeamLogo/YanksLogo.png'
-        },
-        {
             team: 'Philadelphia Phillies',
             name: 'Citizens Bank Park',
             location: 'Philadelphia',
@@ -280,174 +187,93 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
     
-    // DOM Elements
+    // Get DOM elements
     const heroElement = document.querySelector('.hero');
-    const contentElement = document.querySelector('.content');
     const stadiumNameElement = document.getElementById('stadium-name');
     const stadiumLocationElement = document.getElementById('stadium-location');
     const teamLogoElement = document.getElementById('team-logo');
-    const prevBgButton = document.getElementById('prev-bg');
-    const nextBgButton = document.getElementById('next-bg');
+    const prevBgBtn = document.getElementById('prev-bg');
+    const nextBgBtn = document.getElementById('next-bg');
+    const contentElement = document.querySelector('.content');
     
-    // Reset any transition classes that might be stuck
-    heroElement.classList.remove('fading-out');
-    heroElement.classList.remove('fading-in');
+    // Initialize with a random stadium index
+    let currentStadiumIndex = Math.floor(Math.random() * stadiums.length);
+    console.log('Starting with stadium:', currentStadiumIndex, stadiums[currentStadiumIndex].name);
     
-    // Initialize with the first stadium
-    let currentStadiumIndex = 0;
-    let previousStadiumIndex = 0;
+    // Initialize with first stadium
+    updateStadiumDisplay();
     
-    // Initial display
-    updateStadiumContent(stadiums[currentStadiumIndex]);
-    
-    // Make sure all elements are visible
-    fadeInElements();
-    
-    // Initialize with the first stadium
-    console.log('Starting with stadium:', stadiums[currentStadiumIndex].name);
-    
-    // Make sure the hero element is in its default state
-    heroElement.classList.remove('fading-out');
-    heroElement.classList.remove('fading-in');
-    
-    // Set the initial content
-    updateStadiumContent(stadiums[currentStadiumIndex]);
-    
-    // Event listeners for navigation buttons
-    prevBgButton.addEventListener('click', function() {
-        // Store previous index before changing
-        previousStadiumIndex = currentStadiumIndex;
-        
-        // Update index
+    // Add event listeners for navigation buttons
+    prevBgBtn.addEventListener('click', function() {
+        console.log('Previous button clicked');
         currentStadiumIndex = (currentStadiumIndex - 1 + stadiums.length) % stadiums.length;
         console.log('New stadium index:', currentStadiumIndex, 'Stadium:', stadiums[currentStadiumIndex].name);
-        
-        // Update display
         updateStadiumDisplay();
     });
     
-    nextBgButton.addEventListener('click', function() {
-        // Store previous index before changing
-        previousStadiumIndex = currentStadiumIndex;
-        
-        // Update index
+    nextBgBtn.addEventListener('click', function() {
+        console.log('Next button clicked');
         currentStadiumIndex = (currentStadiumIndex + 1) % stadiums.length;
         console.log('New stadium index:', currentStadiumIndex, 'Stadium:', stadiums[currentStadiumIndex].name);
-        
-        // Update display
         updateStadiumDisplay();
     });
     
-    // No upload event listeners needed
-    
-    // Function to update the stadium display with a super smooth transition
+    // Function to update the stadium display
     function updateStadiumDisplay() {
         console.log('Updating stadium display to:', stadiums[currentStadiumIndex].name);
         
-        // Get the current stadium
-        const stadium = stadiums[currentStadiumIndex];
-        
-        // No overlay handling needed
-        
-        // 1. Start transition by fading out UI elements
+        // Fade out elements
         fadeOutElements();
         
-        // 2. Add blur effect to background (fade out with blur)
-        heroElement.classList.add('fading-out');
-        heroElement.classList.remove('fading-in');
-        
-        // 3. Add glow effect to the navigation button that was clicked
-        const clickedButton = currentStadiumIndex > previousStadiumIndex ? nextBgButton : prevBgButton;
-        clickedButton.classList.add('button-clicked');
-        
-        // Remove button glow after animation completes
+        // After a short delay, update content
         setTimeout(() => {
-            clickedButton.classList.remove('button-clicked');
-        }, 500);
-        
-        // 4. Preload the next stadium image
-        const img = new Image();
-        img.src = stadium.image;
-        
-        // 5. Wait for the full blur transition time (400ms) before updating content
-        // This ensures the image changes while fully blurred for a smoother transition
-        setTimeout(() => {
-            // Update all stadium content (image, name, location, logo)
+            const stadium = stadiums[currentStadiumIndex];
             updateStadiumContent(stadium);
             
-            // We'll let the fadeInElements function handle showing the text elements
-            
-            // 6. After updating content, start the fade-in blur transition
-            // We don't remove fading-out class yet - we'll do a full blur cycle
+            // Fade in elements after update
             setTimeout(() => {
-                heroElement.classList.remove('fading-out');
-                heroElement.classList.add('fading-in');
-                setTimeout(() => {
-                    // Fade in all elements together in a single animation frame
-                    fadeInElements();
-                    setTimeout(() => {
-                        heroElement.classList.remove('fading-in');
-                        
-                        // No overlay handling needed
-                    }, 100);
-                }, 300); // Wait until blur is mostly gone
-            }, 50); // Short pause after content update
-        }, 400); // Full blur transition time
+                fadeInElements();
+            }, 400);
+        }, 400);
     }
     
+    // Helper function to fade out elements
+    function fadeOutElements() {
+        // Fade out text elements
+        contentElement.style.opacity = '0.5';
+        stadiumNameElement.style.opacity = '0';
+        stadiumLocationElement.style.opacity = '0';
+        document.querySelector('.location-divider').style.opacity = '0';
+        teamLogoElement.style.opacity = '0';
+        
+        // Add transition class to hero element for background fade
+        heroElement.classList.add('transitioning');
+    }
+
     // Helper function to update stadium content
     function updateStadiumContent(stadium) {
         console.log('Loading stadium:', stadium.name, 'with image:', stadium.image);
         
-        // Update stadium info text first (this is instant)
-        const stadiumNameElement = document.getElementById('stadium-name');
-        const stadiumLocationElement = document.getElementById('stadium-location');
-        const teamLogoElement = document.getElementById('team-logo');
-        const logoContainer = document.querySelector('.logo-container');
-        
-        if (stadiumNameElement) stadiumNameElement.textContent = stadium.name;
-        if (stadiumLocationElement) stadiumLocationElement.textContent = stadium.location;
-        
-        // Make sure all text elements are properly styled
-        if (stadiumNameElement) stadiumNameElement.style.transition = 'opacity 0.4s ease-in-out';
-        if (stadiumLocationElement) stadiumLocationElement.style.transition = 'opacity 0.4s ease-in-out';
-        if (teamLogoElement) teamLogoElement.style.transition = 'opacity 0.4s ease-in-out';
-        if (logoContainer) logoContainer.style.transition = 'opacity 0.4s ease-in-out';
-        
-        // Set up image loading with proper error handling
-        const bgImg = new Image();
-        
-        // Set up error handling
-        bgImg.onerror = function() {
-            console.error('Failed to load stadium image:', stadium.image);
-            // Set a fallback background color if image fails
-            heroElement.style.backgroundImage = 'none';
-            heroElement.style.backgroundColor = '#000';
-        };
-        
-        // Set up successful load handler
-        bgImg.onload = function() {
-            // Only update the background once the image is fully loaded
+        // Create a new image object to preload the background image
+        const img = new Image();
+        img.onload = function() {
+            // Once image is loaded, update the background
             heroElement.style.backgroundImage = `url(${stadium.image})`;
+            
+            // Remove transition class after a short delay
+            setTimeout(() => {
+                heroElement.classList.remove('transitioning');
+            }, 50);
         };
+        img.src = stadium.image;
         
-        // Start loading the image
-        bgImg.src = stadium.image;
+        // Update stadium info text
+        stadiumNameElement.textContent = stadium.name;
+        stadiumLocationElement.textContent = stadium.location;
         
-        // Handle logo loading with proper error handling
+        // Update team logo with preloading
         const logoImg = new Image();
-        
-        // Set up error handling for logo
-        logoImg.onerror = function() {
-            console.error('Failed to load team logo:', stadium.logo);
-            // Set a fallback for the logo
-            teamLogoElement.style.backgroundImage = 'none';
-            teamLogoElement.style.backgroundColor = '#333';
-        };
-        
-        // Set up successful load handler for logo
         logoImg.onload = function() {
-            // Only update the logo once the image is fully loaded
             teamLogoElement.style.backgroundImage = `url(${stadium.logo})`;
             teamLogoElement.style.backgroundColor = 'transparent';
             teamLogoElement.style.border = 'none';
@@ -455,42 +281,15 @@ document.addEventListener('DOMContentLoaded', function() {
         logoImg.src = stadium.logo;
     }
     
-    // Helper function to fade out elements
-    function fadeOutElements() {
-        // Fade out all UI elements with proper opacity values
-        contentElement.style.opacity = '0';
-        stadiumNameElement.style.opacity = '0';
-        stadiumLocationElement.style.opacity = '0';
-        
-        // Make sure we have the location divider before trying to modify it
-        const locationDivider = document.querySelector('.location-divider');
-        if (locationDivider) {
-            locationDivider.style.opacity = '0';
-        }
-        
-        // Fade out the team logo
-        teamLogoElement.style.opacity = '0';
-        
-        console.log('UI elements faded out');
-    }
+    // Helper function to fade in elements
     
     // Helper function to fade in elements
     function fadeInElements() {
-        // Fade in all UI elements with proper opacity values
         stadiumNameElement.style.opacity = '1';
         stadiumLocationElement.style.opacity = '1';
-        
-        // Make sure we have the location divider before trying to modify it
-        const locationDivider = document.querySelector('.location-divider');
-        if (locationDivider) {
-            locationDivider.style.opacity = '0.5';
-        }
-        
-        // Fade in the team logo and main content
+        document.querySelector('.location-divider').style.opacity = '0.5';
         teamLogoElement.style.opacity = '1';
         contentElement.style.opacity = '1';
-        
-        console.log('UI elements faded in');
     }
     
     // Coach data for the chat interface

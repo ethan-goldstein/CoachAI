@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Path Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .image-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .image-container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            background-color: #f5f5f5;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .image-info {
+            font-size: 14px;
+        }
+        .image-status {
+            margin-top: 10px;
+            padding: 5px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coach AI Image Path Checker</h1>
+    <div class="image-grid" id="imageGrid"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stadiums = [
+                {
+                    team: 'Boston Red Sox',
+                    name: 'Fenway Park',
+                    location: 'Boston',
+                    image: 'Images/TeamStadium/FenwayPark.jpg.webp',
+                    logo: 'Images/TeamLogo/REDSOXlogo.png'
+                },
+                {
+                    team: 'Chicago Cubs',
+                    name: 'Wrigley Field',
+                    location: 'Chicago',
+                    image: 'Images/TeamStadium/WrigleyField.jpeg',
+                    logo: 'Images/TeamLogo/CubsLogo.png'
+                },
+                {
+                    team: 'New York Yankees',
+                    name: 'Yankee Stadium',
+                    location: 'New York',
+                    image: 'Images/TeamStadium/YankeeStadium.jpg',
+                    logo: 'Images/TeamLogo/YanksLogo.png'
+                },
+                {
+                    team: 'Chicago White Sox',
+                    name: 'Guaranteed Rate Field',
+                    location: 'Chicago',
+                    image: 'Images/TeamStadium/WhiteSoxStadium.webp',
+                    logo: 'Images/TeamLogo/WhiteSoxLogo.png'
+                },
+                {
+                    team: 'Cincinnati Reds',
+                    name: 'Great American Ball Park',
+                    location: 'Cincinnati',
+                    image: 'Images/TeamStadium/RedsStadium.jpg',
+                    logo: 'Images/TeamLogo/RedsLogo.png'
+                },
+                {
+                    team: 'Cleveland Guardians',
+                    name: 'Progressive Field',
+                    location: 'Cleveland',
+                    image: 'Images/TeamStadium/GuardiansField.jpg',
+                    logo: 'Images/TeamLogo/GuardiansLogo.webp'
+                },
+                {
+                    team: 'Colorado Rockies',
+                    name: 'Coors Field',
+                    location: 'Denver',
+                    image: 'Images/TeamStadium/RockiesField.jpg',
+                    logo: 'Images/TeamLogo/RockiesLogo.png'
+                },
+                {
+                    team: 'Detroit Tigers',
+                    name: 'Comerica Park',
+                    location: 'Detroit',
+                    image: 'Images/TeamStadium/DetroitField.jpg',
+                    logo: 'Images/TeamLogo/DetroitLogo.png'
+                },
+                {
+                    team: 'Houston Astros',
+                    name: 'Minute Maid Park',
+                    location: 'Houston',
+                    image: 'Images/TeamStadium/AstrosField.jpeg',
+                    logo: 'Images/TeamLogo/AstrosLogo.png'
+                },
+                {
+                    team: 'Kansas City Royals',
+                    name: 'Kauffman Stadium',
+                    location: 'Kansas City',
+                    image: 'Images/TeamStadium/KansasCityField.jpg',
+                    logo: 'Images/TeamLogo/RoyalsLogo.png'
+                },
+                {
+                    team: 'Los Angeles Angels',
+                    name: 'Angel Stadium',
+                    location: 'Anaheim',
+                    image: 'Images/TeamStadium/AnglesStadium.jpg',
+                    logo: 'Images/TeamLogo/AngelsLogo.png'
+                },
+                {
+                    team: 'Los Angeles Dodgers',
+                    name: 'Dodger Stadium',
+                    location: 'Los Angeles',
+                    image: 'Images/TeamStadium/DodgerStadium.jpg',
+                    logo: 'Images/TeamLogo/DodgersLogo.png'
+                },
+                {
+                    team: 'Miami Marlins',
+                    name: 'loanDepot park',
+                    location: 'Miami',
+                    image: 'Images/TeamStadium/MarlinsField.jpg',
+                    logo: 'Images/TeamLogo/MarlinsLogo.png'
+                },
+                {
+                    team: 'Milwaukee Brewers',
+                    name: 'American Family Field',
+                    location: 'Milwaukee',
+                    image: 'Images/TeamStadium/BrewersField.jpg',
+                    logo: 'Images/TeamLogo/BrewersLogo.svg'
+                },
+                {
+                    team: 'Minnesota Twins',
+                    name: 'Target Field',
+                    location: 'Minneapolis',
+                    image: 'Images/TeamStadium/TwinsStadium.jpg',
+                    logo: 'Images/TeamLogo/Twinslogo.png'
+                },
+                {
+                    team: 'New York Mets',
+                    name: 'Citi Field',
+                    location: 'New York',
+                    image: 'Images/TeamStadium/CitiField.jpeg',
+                    logo: 'Images/TeamLogo/MetsLogo.png'
+                },
+                {
+                    team: 'Philadelphia Phillies',
+                    name: 'Citizens Bank Park',
+                    location: 'Philadelphia',
+                    image: 'Images/TeamStadium/PhilliesField.jpeg',
+                    logo: 'Images/TeamLogo/PhilliesLogo.png'
+                },
+                {
+                    team: 'Pittsburgh Pirates',
+                    name: 'PNC Park',
+                    location: 'Pittsburgh',
+                    image: 'Images/TeamStadium/PNCPark.jpg',
+                    logo: 'Images/TeamLogo/PiratesLogo.png'
+                },
+                {
+                    team: 'San Diego Padres',
+                    name: 'Petco Park',
+                    location: 'San Diego',
+                    image: 'Images/TeamStadium/PetcoPark.jpg',
+                    logo: 'Images/TeamLogo/PadresLogo.svg'
+                },
+                {
+                    team: 'San Francisco Giants',
+                    name: 'Oracle Park',
+                    location: 'San Francisco',
+                    image: 'Images/TeamStadium/OraclePark.jpg',
+                    logo: 'Images/TeamLogo/GiantsLogo.png'
+                },
+                {
+                    team: 'Seattle Mariners',
+                    name: 'T-Mobile Park',
+                    location: 'Seattle',
+                    image: 'Images/TeamStadium/T-MobilePark.jpg',
+                    logo: 'Images/TeamLogo/MarinersLogo.png'
+                },
+                {
+                    team: 'St. Louis Cardinals',
+                    name: 'Busch Stadium',
+                    location: 'St. Louis',
+                    image: 'Images/TeamStadium/CardinalsStadium.jpg',
+                    logo: 'Images/TeamLogo/CardinalsLogo.png'
+                },
+                {
+                    team: 'Tampa Bay Rays',
+                    name: 'Tropicana Field',
+                    location: 'St. Petersburg',
+                    image: 'Images/TeamStadium/TropicanaField.jpeg',
+                    logo: 'Images/TeamLogo/RaysLogo.png'
+                },
+                {
+                    team: 'Texas Rangers',
+                    name: 'Globe Life Field',
+                    location: 'Arlington',
+                    image: 'Images/TeamStadium/RangersStadium.jpg',
+                    logo: 'Images/TeamLogo/RangersLogo.png'
+                },
+                {
+                    team: 'Toronto Blue Jays',
+                    name: 'Rogers Centre',
+                    location: 'Toronto',
+                    image: 'Images/TeamStadium/BlueJaysField.jpg',
+                    logo: 'Images/TeamLogo/BlueJaysLogo.png'
+                },
+                {
+                    team: 'Washington Nationals',
+                    name: 'Nationals Park',
+                    location: 'Washington, D.C.',
+                    image: 'Images/TeamStadium/NatsPark.jpg',
+                    logo: 'Images/TeamLogo/NatsLogo.png'
+                }
+            ];
+
+            const imageGrid = document.getElementById('imageGrid');
+
+            // Check both stadium images and logos
+            stadiums.forEach(stadium => {
+                // Create card for stadium image
+                createImageCard(stadium.team, stadium.name, stadium.image, 'Stadium');
+                
+                // Create card for team logo
+                createImageCard(stadium.team, stadium.name, stadium.logo, 'Logo');
+            });
+
+            function createImageCard(team, name, imagePath, type) {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'image-container';
+                
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.alt = `${team} ${type}`;
+                
+                const imageInfo = document.createElement('div');
+                imageInfo.className = 'image-info';
+                imageInfo.innerHTML = `<strong>${team}</strong><br>${name} ${type}<br>Path: ${imagePath}`;
+                
+                const imageStatus = document.createElement('div');
+                imageStatus.className = 'image-status';
+                
+                // Check if image loads successfully
+                img.onload = function() {
+                    imageStatus.textContent = 'Image loaded successfully';
+                    imageStatus.classList.add('success');
+                };
+                
+                img.onerror = function() {
+                    imageStatus.textContent = 'Error loading image';
+                    imageStatus.classList.add('error');
+                };
+                
+                imageContainer.appendChild(img);
+                card.appendChild(imageContainer);
+                card.appendChild(imageInfo);
+                card.appendChild(imageStatus);
+                
+                imageGrid.appendChild(card);
+            }
+        });
+    </script>
+</body>
+</html>
