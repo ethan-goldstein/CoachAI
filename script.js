@@ -7,188 +7,190 @@ document.addEventListener('DOMContentLoaded', function() {
             team: 'Boston Red Sox',
             name: 'Fenway Park',
             location: 'Boston',
-            image: 'Images/TeamStadium/fenwaypark.jpg.webp',
-            logo: 'Images/TeamLogo/REDSOXlogo.png'
+            image: 'FenwayPark.jpg.webp',
+            logo: 'REDSOXlogo.png'
         },
         {
             team: 'Chicago Cubs',
             name: 'Wrigley Field',
             location: 'Chicago',
-            image: 'Images/TeamStadium/fenwaypark.jpg.webp', // Using Fenway as placeholder
-            logo: 'Images/TeamLogo/REDSOXlogo.png'   // Using Red Sox logo as placeholder
+            image: 'WrigleyField.jpeg',
+            logo: 'CubsLogo.png'
         },
         {
             team: 'New York Yankees',
             name: 'Yankee Stadium',
             location: 'New York',
-            image: 'Images/TeamStadium/fenwaypark.jpg.webp', // Using Fenway as placeholder
-            logo: 'Images/TeamLogo/REDSOXlogo.png'   // Using Red Sox logo as placeholder
+            image: 'YankeeStadium.jpg',
+            logo: 'YanksLogo.png'
         },
         {
             team: 'Chicago White Sox',
             name: 'Guaranteed Rate Field',
             location: 'Chicago',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'WhiteSoxStadium.webp',
+            logo: 'WhiteSoxLogo.png'
         },
         {
             team: 'Cincinnati Reds',
             name: 'Great American Ball Park',
             location: 'Cincinnati',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'RedsStadium.jpg',
+            logo: 'RedsLogo.png'
         },
         {
             team: 'Cleveland Guardians',
             name: 'Progressive Field',
             location: 'Cleveland',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'GuardiansField.jpg',
+            logo: 'GuardiansLogo.webp'
         },
         {
             team: 'Colorado Rockies',
             name: 'Coors Field',
             location: 'Denver',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'RockiesField.jpg',
+            logo: 'RockiesLogo.png'
         },
         {
             team: 'Detroit Tigers',
             name: 'Comerica Park',
             location: 'Detroit',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'DetroitField.jpg',
+            logo: 'DetroitLogo.png'
         },
         {
             team: 'Houston Astros',
             name: 'Minute Maid Park',
             location: 'Houston',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'AstrosField.jpeg',
+            logo: 'AstrosLogo.png'
         },
         {
             team: 'Kansas City Royals',
             name: 'Kauffman Stadium',
             location: 'Kansas City',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'KansasCityField.jpg',
+            logo: 'RoyalsLogo.png'
         },
         {
             team: 'Los Angeles Angels',
             name: 'Angel Stadium',
             location: 'Anaheim',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'AnglesStadium.jpg',
+            logo: 'AngelsLogo.png'
         },
         {
             team: 'Los Angeles Dodgers',
             name: 'Dodger Stadium',
             location: 'Los Angeles',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'DodgerStadium.jpg',
+            logo: 'DodgersLogo.png'
         },
         {
             team: 'Miami Marlins',
             name: 'loanDepot park',
             location: 'Miami',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'MarlinsField.jpg',
+            logo: 'MarlinsLogo.png'
         },
         {
             team: 'Milwaukee Brewers',
             name: 'American Family Field',
             location: 'Milwaukee',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'BrewersField.jpg',
+            logo: 'placeholder.jpg'
         },
         {
             team: 'Minnesota Twins',
             name: 'Target Field',
             location: 'Minneapolis',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'TwinsStadium.jpg',
+            logo: 'Twinslogo.png'
         },
         {
             team: 'New York Mets',
             name: 'Citi Field',
             location: 'New York',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'CitiField.jpeg',
+            logo: 'MetsLogo.png'
         },
         {
             team: 'New York Yankees',
             name: 'Yankee Stadium',
             location: 'New York',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'YankeeStadium.jpg',
+            logo: 'YanksLogo.png'
         },
         {
             team: 'Philadelphia Phillies',
             name: 'Citizens Bank Park',
             location: 'Philadelphia',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'PhilliesField.jpeg',
+            logo: 'PhilliesLogo.png'
         },
         {
             team: 'Pittsburgh Pirates',
             name: 'PNC Park',
             location: 'Pittsburgh',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'PNCPark.jpg',
+            logo: 'PiratesLogo.png'
         },
         {
             team: 'San Diego Padres',
             name: 'Petco Park',
             location: 'San Diego',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'PetcoPark.jpg',
+            logo: 'PadresLogo.svg'
         },
         {
             team: 'San Francisco Giants',
             name: 'Oracle Park',
             location: 'San Francisco',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'OracleParkjpg',
+            logo: 'GiantsLogo.png'
         },
         {
             team: 'Seattle Mariners',
             name: 'T-Mobile Park',
             location: 'Seattle',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'T-MobilePark.jpg',
+            logo: 'MarinersLogo.png'
         },
         {
             team: 'St. Louis Cardinals',
             name: 'Busch Stadium',
             location: 'St. Louis',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'CardinalsStadium.jpg',
+            logo: 'CardinalsLogo.png'
         },
         {
             team: 'Tampa Bay Rays',
             name: 'Tropicana Field',
             location: 'St. Petersburg',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'TropicanaField.jpeg',
+            logo: 'RaysLogo.png'
         },
         {
             team: 'Texas Rangers',
             name: 'Globe Life Field',
             location: 'Arlington',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'RangersStadium.jpg',
+            logo: 'RangersLogo.png'
         },
         {
             team: 'Toronto Blue Jays',
             name: 'Rogers Centre',
             location: 'Toronto',
-            image: 'placeholder.jpg', // Replace with your stadium image path
-            logo: 'placeholder.jpg'   // Replace with your team logo image path
+            image: 'BlueJaysField.jpg',
+            logo: 'BlueJaysLogo.png'
         },
         {
             team: 'Washington Nationals',
             name: 'Nationals Park',
             location: 'Washington, D.C.',
+            image: 'NatsPark.jpg',
+            logo: 'NatsLogo.png'
         }
     ];
     
