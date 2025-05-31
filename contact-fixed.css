@@ -1,0 +1,272 @@
+/* Contact Page Styles - Fixed Layout */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contact-body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-nav {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.vintage-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.vintage-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.vintage-button i {
+    margin-right: 8px;
+}
+
+/* Main content */
+.contact-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left column */
+.contact-left {
+    width: 40%;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Right column */
+.contact-right {
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Profile image */
+.profile-image-container {
+    margin-bottom: 40px;
+}
+
+.emblem {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+}
+
+.emblem::before {
+    content: "\f03e";
+    font-family: "Font Awesome 5 Free";
+    font-size: 60px;
+    color: #444;
+}
+
+/* Vintage seal */
+.vintage-seal {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px dashed #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.seal-inner {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+}
+
+.seal-inner span {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+/* Contact header */
+.contact-header {
+    margin-bottom: 40px;
+}
+
+.contact-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.header-line {
+    width: 60px;
+    height: 3px;
+    background-color: #d64541;
+    margin: 15px 0;
+}
+
+.contact-subtitle {
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* Contact links */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-row {
+    display: flex;
+    gap: 20px;
+}
+
+.contact-link-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.contact-link-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.email-icon {
+    background-color: #d64541;
+}
+
+.linkedin-icon {
+    background-color: #0077b5;
+}
+
+.instagram-icon {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.github-icon {
+    background-color: #333;
+}
+
+.contact-text {
+    color: #ddd;
+    font-size: 14px;
+}
+
+/* Contact tagline */
+.contact-tagline {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.contact-tagline p {
+    color: #777;
+    font-style: italic;
+}
+
+/* Footer */
+.contact-footer {
+    background-color: #121212;
+    padding: 15px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.contact-footer p {
+    color: #555;
+    font-size: 12px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-left, .contact-right {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .contact-left {
+        height: 40%;
+    }
+    
+    .contact-right {
+        height: 60%;
+    }
+    
+    .emblem {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .contact-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .contact-header h1 {
+        font-size: 32px;
+    }
+}
