@@ -522,6 +522,12 @@ a:hover {
     background-position: center;
 }
 
+#greg-image {
+    background-image: url('Images/Coaches/GregMaddux.webp');
+    background-size: cover;
+    background-position: center;
+}
+
 .coach-content {
     text-align: center;
     display: flex;
@@ -597,8 +603,7 @@ a:hover {
 }
 
 #greg-image {
-    background-color: #9b59b6; /* Purple placeholder */
-    background-image: linear-gradient(135deg, #9b59b6, #8e44ad);
+    background-image: url('Images/Coaches/GregMaddux.webp');
     background-size: cover;
     background-position: center;
 }
