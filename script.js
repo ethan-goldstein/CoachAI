@@ -11,7 +11,7 @@ function startBackgroundSwitching() {
         clearInterval(backgroundSwitchingInterval);
     }
     
-    // Set interval to switch backgrounds every 6 seconds
+    // Set interval to switch backgrounds every 5 seconds
     backgroundSwitchingInterval = setInterval(() => {
         console.log('Auto-switching to next stadium');
         // Store previous index for transition effects
@@ -20,7 +20,7 @@ function startBackgroundSwitching() {
         currentStadiumIndex = (currentStadiumIndex + 1) % stadiums.length;
         // Update the stadium display
         updateStadiumDisplay();
-    }, 6000);
+    }, 5000);
 }
 
 // Function to stop automatic background switching
@@ -31,9 +31,9 @@ function stopBackgroundSwitching() {
     }
 }
 
-// Force reset any stuck transitions when the page loads
+// Start with blur and fade in smoothly when the page loads
 window.onload = function() {
-    console.log('Window loaded - resetting transitions');
+    console.log('Window loaded - starting with blur transition');
     const hero = document.querySelector('.hero');
     const overlay = document.querySelector('.overlay');
     const stadiumNameElement = document.getElementById('stadium-name');
@@ -45,9 +45,39 @@ window.onload = function() {
     const stadiumText = document.querySelector('.stadium-text');
     
     if (hero) {
-        // Reset hero element by removing all transition classes
-        hero.classList.remove('fading-out');
+        // Start with blur effect
+        hero.classList.add('fading-out');
         hero.classList.remove('fading-in');
+        
+        // Hide content elements initially
+        if (contentElement) contentElement.style.opacity = '0';
+        if (stadiumNameElement) stadiumNameElement.style.opacity = '0';
+        if (stadiumLocationElement) stadiumLocationElement.style.opacity = '0';
+        if (teamLogoElement) teamLogoElement.style.opacity = '0';
+        if (locationDivider) locationDivider.style.opacity = '0';
+        if (stadiumInfo) stadiumInfo.style.opacity = '0';
+        
+        // After a shorter delay, start the fade-in transition faster
+        setTimeout(() => {
+            // Remove blur
+            hero.classList.remove('fading-out');
+            hero.classList.add('fading-in');
+            
+            // Fade in content elements
+            setTimeout(() => {
+                if (contentElement) contentElement.style.opacity = '1';
+                if (stadiumNameElement) stadiumNameElement.style.opacity = '1';
+                if (stadiumLocationElement) stadiumLocationElement.style.opacity = '1';
+                if (teamLogoElement) teamLogoElement.style.opacity = '1';
+                if (locationDivider) locationDivider.style.opacity = '1';
+                if (stadiumInfo) stadiumInfo.style.opacity = '1';
+                
+                // Complete the transition
+                setTimeout(() => {
+                    hero.classList.remove('fading-in');
+                }, 200); // Faster completion
+            }, 150); // Faster content fade-in
+        }, 250); // Shorter initial delay
         
         // Force the filter to be reset
         hero.style.filter = 'none';
@@ -383,6 +413,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Make sure all elements are visible
     fadeInElements();
+    
+    // No automatic background switching on home page
+    // Only manual navigation through buttons
     
     // Event listeners for navigation buttons
     prevBgButton.addEventListener('click', function() {

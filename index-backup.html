@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach AI</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="hero" id="hero-background">
-        <div class="text-overlay"></div>
+    <section class="hero" id="hero" style="background-image: url('Images/TeamStadium/FenwayPark.jpg.webp'); background-size: cover; background-position: center;">
+        <div class="overlay"></div>
+        
+        <!-- Navigation -->
+        <div class="top-nav">
+            <a href="contact.html" class="contact-link"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
         
         <!-- Stadium Info Display -->
         <div class="stadium-info">
             <div class="stadium-text">
-                <span id="stadium-name">Fenway Park</span><span class="location-divider">•</span> <span id="stadium-location">Boston</span>
+                <span id="stadium-name">Fenway Park</span><span class="location-divider">•</span><span id="stadium-location">Boston</span>
             </div>
         </div>
         
@@ -45,7 +51,7 @@
         <footer class="hero-footer">
             <p>© 2025 COACH AI</p>
         </footer>
-    </div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>

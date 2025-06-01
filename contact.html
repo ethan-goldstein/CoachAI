@@ -4,80 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach AI - Contact</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="navigation.css">
-    <link rel="stylesheet" href="contact-new-design.css">
+    <link rel="stylesheet" href="style.css?v=1.3">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="contact-body">
-    <!-- Baseball stitching decoration -->
-    <div class="baseball-stitch"></div>
-    <div class="baseball-decoration"></div>
+<body class="contact-page">
+    <!-- Background elements -->
+    <div class="tech-bg"></div>
+    <div class="glow-circle glow-circle-1"></div>
+    <div class="glow-circle glow-circle-2"></div>
+    <div class="grid-overlay"></div>
     
     <!-- Navigation -->
-    <div class="contact-nav">
-        <a href="index.html" class="home-button"><i class="fas fa-home"></i> Home</a>
+    <div class="top-nav">
+        <a href="index.html" class="contact-link"><i class="fas fa-home"></i> Home</a>
     </div>
     
     <!-- Main content -->
-    <main class="contact-main">
-        <div class="contact-title">
-            <h1>Contact</h1>
-            <p>Get in touch with our coaches</p>
+    <div class="contact-container">
+        <!-- Header -->
+        <div class="contact-header">
+            <div class="header-text">Contact</div>
+            <div class="header-underline"></div>
+        </div>
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-image">
+                <!-- To change this image, add your image file to the Images/Profiles directory and update the src path below -->
+                <img src="Images/ProfilePics/ContactMe.png" alt="Coach AI" class="profile-img">
+                <div class="profile-glow"></div>
+            </div>
+            <div class="profile-info">
+                <h2>Coach AI</h2>
+                <p>Powered by cutting-edge GPT technology, this ai is carefully trained 
+                    to mirror the ideas and expertise of these real life baseball mentors. 
+                    My platform delivers instant, high-quality advice on everything 
+                    from mechanics and drills to strategy and mental performance. 
+                    No appointments. No costs. Just fast, personalized coaching — anytime you need it.</p>
+            </div>
         </div>
         
-        <div class="profile-container">
-            <div class="emblem"></div>
-        </div>
-        
-        <div class="contact-card">
+        <!-- Contact Methods -->
+        <div class="contact-methods-container">
+            <div class="connect-header">
+                <div class="connect-text">Connect With Me</div>
+                <div class="connect-underline"></div>
+            </div>
             <div class="contact-methods">
-                <a href="mailto:your.email@example.com" class="contact-method">
+                <a href="mailto:ethangoldstein@gmail.com" class="contact-method">
                     <div class="method-icon email-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="method-details">
                         <div class="method-name">Email</div>
-                        <div class="method-value">your.email@example.com</div>
+                        <div class="method-value">ethancgoldstein</div>
                     </div>
                 </a>
                 
-                <a href="https://linkedin.com/in/yourprofile" class="contact-method">
+                <a href="www.linkedin.com/in/ethangoldstein-" class="contact-method">
                     <div class="method-icon linkedin-icon">
                         <i class="fab fa-linkedin-in"></i>
                     </div>
                     <div class="method-details">
                         <div class="method-name">LinkedIn</div>
-                        <div class="method-value">linkedin.com/in/yourprofile</div>
+                        <div class="method-value">ethangoldstein</div>
                     </div>
                 </a>
                 
-                <a href="https://instagram.com/yourusername" class="contact-method">
+                <a href="https://instagram.com/ethangoldsteinn" class="contact-method">
                     <div class="method-icon instagram-icon">
                         <i class="fab fa-instagram"></i>
                     </div>
                     <div class="method-details">
                         <div class="method-name">Instagram</div>
-                        <div class="method-value">@yourusername</div>
+                        <div class="method-value">@ethangoldsteinni</div>
                     </div>
                 </a>
                 
-                <a href="https://github.com/yourusername" class="contact-method">
-                    <div class="method-icon github-icon">
-                        <i class="fab fa-github"></i>
+                <a href="tel:+1 301 526 0790" class="contact-method">
+                    <div class="method-icon phone-icon">
+                        <i class="fas fa-phone"></i>
                     </div>
                     <div class="method-details">
-                        <div class="method-name">GitHub</div>
-                        <div class="method-value">github.com/yourusername</div>
+                        <div class="method-name">Phone</div>
+                        <div class="method-value">(301) 526-0790</div>
                     </div>
                 </a>
             </div>
         </div>
-    </main>
+    </div>
     
     <footer class="contact-footer">
-        <p>&copy; 2025 Coach AI - Baseball Training</p>
+        <p>2025 Coach AI - Baseball Training</p>
     </footer>
+    <!-- Custom script for icon hover effects -->
+    <script src="contact-icons.js"></script>
 </body>
 </html>
