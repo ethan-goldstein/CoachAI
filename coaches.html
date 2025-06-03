@@ -34,21 +34,21 @@
                             <div class="coach-card" data-coach="barry">
                                 <div class="coach-image" id="barry-image"></div>
                                 <h3>Barry Bonds</h3>
-                                <p>Hitting</p>
+                                <p>Greatest Hitter Of All Time</p>
                             </div>
                         </td>
                         <td>
                             <div class="coach-card" data-coach="ron">
                                 <div class="coach-image" id="ron-image"></div>
                                 <h3>Ron Washington</h3>
-                                <p>Fielding</p>
+                                <p>Fielding and Mechanics Expert</p>
                             </div>
                         </td>
                         <td>
                             <div class="coach-card" data-coach="greg">
                                 <div class="coach-image" id="greg-image"></div>
                                 <h3>Greg Maddux</h3>
-                                <p>Pitching</p>
+                                <p>4X Cy Young and Hall of Famer</p>
                             </div>
                         </td>
                     </tr>
@@ -66,7 +66,7 @@
         coachCards.forEach(card => {
             card.addEventListener('click', function() {
                 const coachId = this.getAttribute('data-coach');
-                window.location.href = `chat.html?coach=${coachId}`;
+                window.location.href = `chat-${coachId}.html`;
             });
         });
     });

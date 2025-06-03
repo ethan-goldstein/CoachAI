@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Greg Maddux - COACH AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="coach-chat-layout">
+        <nav class="chat-nav">
+            <a href="javascript:history.back()" class="contact-link"><i class="fas fa-home"></i> Back</a>
+            <a href="coaches.html" class="contact-link"><i class="fas fa-users"></i> Coaches</a>
+        </nav>
+        
+        <main class="chat-content">
+            <div class="coach-profile">
+                <div class="coach-image" id="greg-image"></div>
+                <h1>Greg Maddux</h1>
+                <h2>Pitching Expert</h2>
+                <p class="coach-bio">Greg Maddux is a legendary pitching coach known for his exceptional command and strategic approach to the game. With multiple Cy Young awards and a reputation for outsmarting batters, he brings decades of elite pitching experience to help players master their craft.</p>
+            </div>
+        </main>
+
+        <div class="chat-indicator">
+            <div class="chat-text">LET'S CHAT</div>
+            <svg class="curved-arrow" width="120" height="300" viewBox="0 0 120 300">
+                <path d="M20,0 C50,100 80,200 100,300" fill="none" stroke="#4299e1" stroke-width="3" stroke-linecap="round"/>
+                <path d="M90,280 L100,300 L110,280" fill="none" stroke="#4299e1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+    
+    <footer class="hero-footer">
+        <p>&copy; 2025 COACH AI</p>
+    </footer>
+    
+    <!-- No custom positioning for Voiceflow widget - using default bottom-right position -->
+    
+    <!-- New Voiceflow Widget Code (replacing legacy widget that will be removed June 15th) -->
+    <script type="text/javascript">
+      (function(d, t) {
+          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          v.onload = function() {
+            window.voiceflow.chat.load({
+              verify: { projectID: '683e5f3483372bb566fd9fc9' },
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: 'production'
+            });
+          }
+          v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+      })(document, 'script');
+    </script>
+</body>
+</html>
