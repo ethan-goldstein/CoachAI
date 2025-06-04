@@ -11,7 +11,7 @@
 <body>
     <div class="coach-chat-layout">
         <nav class="chat-nav">
-            <a href="javascript:history.back()" class="contact-link"><i class="fas fa-home"></i> Back</a>
+            <a href="index.html" class="contact-link"><i class="fas fa-home"></i> Home</a>
             <a href="coaches.html" class="contact-link"><i class="fas fa-users"></i> Coaches</a>
         </nav>
         
@@ -34,23 +34,24 @@
     </div>
     
     <footer class="hero-footer">
-        <p>&copy; 2025 COACH AI</p>
+        <p>2025 COACH AI</p>
     </footer>
     
-    <!-- No custom positioning for Voiceflow widget - using default bottom-right position -->
-    
-    <!-- New Voiceflow Widget Code (replacing legacy widget that will be removed June 15th) -->
+    <!-- Voiceflow Chat Widget -->
     <script type="text/javascript">
       (function(d, t) {
           var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
           v.onload = function() {
             window.voiceflow.chat.load({
-              verify: { projectID: '683e5f3483372bb566fd9fc9' },
+              verify: { projectID: '683faabf1152ab75e445be18' },
               url: 'https://general-runtime.voiceflow.com',
-              versionID: 'production'
+              versionID: 'production',
+              voice: {
+                url: "https://runtime-api.voiceflow.com"
+              }
             });
           }
-          v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
       })(document, 'script');
     </script>
 </body>
