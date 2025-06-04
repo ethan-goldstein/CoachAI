@@ -5,15 +5,13 @@ let backgroundSwitchingInterval = null;
 
 // Function to start automatic background switching
 function startBackgroundSwitching() {
-    console.log('Starting automatic background switching');
-    // Clear any existing interval
     if (backgroundSwitchingInterval) {
         clearInterval(backgroundSwitchingInterval);
     }
     
     // Set interval to switch backgrounds every 5 seconds
     backgroundSwitchingInterval = setInterval(() => {
-        console.log('Auto-switching to next stadium');
+
         // Store previous index for transition effects
         previousStadiumIndex = currentStadiumIndex;
         // Get the next stadium index
@@ -33,16 +31,12 @@ function stopBackgroundSwitching() {
 
 // Start with blur and fade in smoothly when the page loads
 window.onload = function() {
-    console.log('Window loaded - starting with blur transition');
-    const heroElement = document.querySelector('.hero');
-    const overlay = document.querySelector('.overlay');
+    const hero = document.querySelector('.hero');
     const stadiumNameElement = document.getElementById('stadium-name');
     const stadiumLocationElement = document.getElementById('stadium-location');
     const teamLogoElement = document.getElementById('team-logo');
     const contentElement = document.querySelector('.content');
     const locationDivider = document.querySelector('.location-divider');
-    const prevBgButton = document.getElementById('prev-bg');
-    const nextBgButton = document.getElementById('next-bg');
     const stadiumInfo = document.querySelector('.stadium-info');
     const stadiumText = document.querySelector('.stadium-text');
     
@@ -87,13 +81,7 @@ window.onload = function() {
     
     // No overlay handling needed
     
-    // Make sure all UI elements are visible
-    if (stadiumNameElement) stadiumNameElement.style.opacity = '1';
-    if (stadiumLocationElement) stadiumLocationElement.style.opacity = '1';
-    if (locationDivider) locationDivider.style.opacity = '1';
-    if (teamLogoElement) teamLogoElement.style.opacity = '1';
-    if (contentElement) contentElement.style.opacity = '1';
-    if (stadiumInfo) stadiumInfo.style.opacity = '1';
+
     if (stadiumText) stadiumText.style.opacity = '1';
 };
 
@@ -474,7 +462,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Set up error handling
             bgImg.onerror = function() {
-                console.error('Failed to load stadium image:', stadium.image);
+
                 // Set a fallback background color if image fails
                 heroElement.style.backgroundImage = 'none';
                 heroElement.style.backgroundColor = '#000';
@@ -496,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Set up error handling for logo
             logoImg.onerror = function() {
-                console.error('Failed to load team logo:', stadium.logo);
+
                 // Set a fallback for the logo
                 teamLogoElement.style.backgroundImage = 'none';
                 teamLogoElement.style.backgroundColor = '#333';
@@ -543,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update index
             currentStadiumIndex = (currentStadiumIndex - 1 + stadiums.length) % stadiums.length;
-            console.log('New stadium index:', currentStadiumIndex, 'Stadium:', stadiums[currentStadiumIndex].name);
+
             
             // Update display
             updateStadiumDisplay();
@@ -555,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update index
             currentStadiumIndex = (currentStadiumIndex + 1) % stadiums.length;
-            console.log('New stadium index:', currentStadiumIndex, 'Stadium:', stadiums[currentStadiumIndex].name);
+
             
             // Update display
             updateStadiumDisplay();
