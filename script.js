@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             location: "Boston",
             team: "Boston Red Sox",
             logo: "Images/TeamLogo/REDSOXlogo.png",
-            image: "Images/TeamStadium/FenwayPark.jpg.webp"
+            image: "Images/TeamStadium/FenwayPark.jpg"
         },
         {
             name: "Yankee Stadium",
