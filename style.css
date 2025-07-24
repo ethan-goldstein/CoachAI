@@ -2057,6 +2057,20 @@ a:hover {
 
 /* Responsive Design for Contact Page */
 @media (max-width: 768px) {
+    .coach-grid {
+        padding: 0 10px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+    }
+    
+    .coach-grid table {
+        margin-left: 0;
+        left: 0;
+        width: auto;
+        min-width: 100%;
+    }
+    
     .contact-container {
         padding: 20px 15px;
         margin-top: 50px;
