@@ -823,6 +823,20 @@ a:hover {
     padding-right: calc(400px + 40px);
 }
 
+.coach-grid {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 0;
+}
+
+.coach-cards-container {
+    display: inline-flex;
+    gap: 30px;
+    padding: 0 20px;
+    min-width: min-content;
+}
+
 /* Style Voiceflow chat widget */
 #voiceflow-chat .vfrc-launcher__button {
     background-color: white !important;
@@ -2058,17 +2072,20 @@ a:hover {
 /* Responsive Design for Contact Page */
 @media (max-width: 768px) {
     .coach-grid {
-        padding: 0 10px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        padding: 10px 0 30px;
         width: 100%;
     }
     
-    .coach-grid table {
-        margin-left: 0;
-        left: 0;
-        width: auto;
-        min-width: 100%;
+    .coach-cards-container {
+        padding: 0 20px;
+        gap: 15px;
+    }
+    
+    .coach-card {
+        min-width: 250px;
+        margin: 0;
     }
     
     .contact-container {
