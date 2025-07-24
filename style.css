@@ -13,7 +13,8 @@ body {
     background-color: #000;
     line-height: 1.6;
     overflow-x: hidden;
-    overflow: hidden; /* Prevent scrollbars during transitions */
+    min-height: 100vh;
+    position: relative;
 }
 
 /* Black outline style for specific elements */
