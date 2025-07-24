@@ -2150,9 +2150,10 @@ a:hover {
     background-color: #303030;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
     position: relative;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .contact-nav {
@@ -2361,13 +2362,15 @@ a:hover {
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 20%);
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     color: var(--text);
     position: relative;
-    overflow: hidden;
+    padding-bottom: 40px; /* Space for footer */
 }
 
 /* Animated background elements */
